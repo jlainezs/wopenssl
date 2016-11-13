@@ -85,4 +85,15 @@ class EncryptTest extends BaseTest
 
         $encrypt->decryptWithPrivateKey($encryptedData, $this->tstPem('1'), $this->password());
     }
+
+    public function testEncryptDecryptLargeData()
+    {
+        list($cert, $dn) = $this->createACertificate();
+        $data = bin2hex(openssl_random_pseudo_bytes(2048));
+        $crypt = new Crypt;
+        $encryptedData = $crypt->encryptWithPublicKey($data, $this->tstCer());
+        $decryptedData = $crypt->decryptWithPrivateKey($encryptedData, $this->tstPem(), $this->password());
+
+        $this->assertEquals($data, $decryptedData);
+    }
 }

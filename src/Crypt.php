@@ -37,10 +37,15 @@ class Crypt
     {
         $result = '';
         $encryptedData = '';
+        $pwd = openssl_random_pseudo_bytes(32);
 
         if ($publicKey = openssl_pkey_get_public("file://" . $certWithPubKey)) {
-            $result = openssl_public_encrypt($data, $encryptedData, $publicKey);
+            $result = openssl_public_encrypt($pwd, $encryptedPwd, $publicKey);
             openssl_free_key($publicKey);
+            $randomBytes = openssl_random_pseudo_bytes(16);
+            $encryptedPwd = bin2hex($encryptedPwd);
+            $encryptedData = openssl_encrypt($data, 'AES-256-CBC', $pwd, null, $randomBytes);
+            $encryptedData = $encryptedPwd . '|' . $encryptedData . '|' . bin2hex($randomBytes);
         }
 
         if ($result == '') {
@@ -65,9 +70,15 @@ class Crypt
      */
     public function decryptWithPrivateKey($encryptedData, $privateKeyFile, $password)
     {
+        $aParts = explode('|', $encryptedData);
+        $encryptedPwd = hex2bin($aParts[0]);
+        $encryptedData = $aParts[1];
+        $randomBytes = hex2bin($aParts[2]);
+
         if ($privateKey = openssl_pkey_get_private('file://' . $privateKeyFile, $password)) {
-            $result = openssl_private_decrypt($encryptedData, $decryptedData, $privateKey);
+            $result = openssl_private_decrypt($encryptedPwd, $pwd, $privateKey);
             openssl_free_key($privateKey);
+            $decryptedData = openssl_decrypt($encryptedData, 'AES-256-CBC', $pwd, null, $randomBytes);
 
             if ($result) {
                 return $decryptedData;
