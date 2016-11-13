@@ -22,12 +22,7 @@ Offers encrypt and decrypt data. Encryption needs a certificate public key and d
 certificate private key.
 
 ##Testing instructions
-Change to tests directory and execute
-
-```phpunit```
-
-without arguments.
-phpunit.xml is used to define default settings.
+Change to tests directory and execute ```phpunit``` without arguments. phpunit.xml is used to define default settings.
 
 ##License
 This software is licensed under the GNU GPL v3 license.
