@@ -11,6 +11,10 @@
 require_once '../vendor/autoload.php';
 require_once 'testClasses/BaseTest.php';
 
+if (!file_exists('output')) {
+    mkdir('output');
+}
+
 define('TST_HOME', dirname(realpath(__FILE__)));
 define('TST_VAULT_DIR', TST_HOME . '/output');
 define('TST_OPENSSL_CONFIG', TST_HOME . '/openssl.cnf');
