@@ -6,11 +6,9 @@ This components allows to manage digital certificates through PHP OpenSSL extens
 encrypt/decrypt of data as well as signature and validation of signature.
 
 ##Install
-Add the key
+```composer require cloudconceptes/wopenssl```
 
-
-
-to the composer require.
+or add the reference to do require section of your ```composer.json``` file.
 
 ##Usage
 ###Class Certificate
