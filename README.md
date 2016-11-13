@@ -1,4 +1,6 @@
 # wopenssl
+[![Build Status](https://travis-ci.org/jlainezs/JoPhTasks.svg?branch=master)](https://travis-ci.org/jlainezs/wopenssl)
+
 OpenSSL wrapper classes.
 This components allows to manage digital certificates through PHP OpenSSL extension. It also offers basic
 encrypt/decrypt of data as well as signature and validation of signature.
