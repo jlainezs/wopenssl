@@ -1,5 +1,3 @@
-/sample-project/src export-ignore
-/sample-project/www export-ignore
 /tests export-ignore
 /.gitattributes export-ignore
 /.gitignore export-ignore

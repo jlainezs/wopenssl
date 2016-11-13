@@ -1,0 +1,25 @@
+{
+  "name": "cloudconceptes/wopenssl",
+  "description": "OpenSSL wrapper classes",
+  "keywords": ["openssl"],
+  "minimum-stability": "dev",
+  "license": "LGPL-3.0",
+  "authors": [
+    {
+      "name": "Pep Lainez",
+      "email": "jlainezs@cloudconceptes.com"
+    }
+  ],
+  "require":{
+    "php": ">=5.6.0"
+  },
+  "require-dev":{
+    "cvuorinen/phpdoc-markdown-public": ">=0.1.2",
+    "phpunit/phpunit": ">=5.6.2"
+  },
+  "autoload":{
+    "psr-4": {
+      "CloudConceptes\\WOpenSSL\\": "src/"
+    }
+  }
+}
